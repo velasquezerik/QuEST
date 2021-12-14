@@ -33,7 +33,7 @@ extern QuESTEnv QUEST_ENV;
  * results from their expected value, due to numerical error; this is especially 
  * apparent for density matrices.
  */
-#define NUM_QUBITS 5
+#define NUM_QUBITS 3
 
 /** A complex square matrix. 
  * Should be initialised with getZeroMatrix().
