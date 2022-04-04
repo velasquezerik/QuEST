@@ -48,8 +48,10 @@ if (NOT TESTING)
     # Link libraries to user executable, including QuEST library
     if (WIN32)
         target_link_libraries(${OUTPUT_EXE} QuEST)
+        add_custom_target(run ${OUTPUT_EXE})
     else ()
         target_link_libraries(${OUTPUT_EXE} QuEST m)
+        add_custom_target(run ${OUTPUT_EXE})
     endif()
 endif()
 
