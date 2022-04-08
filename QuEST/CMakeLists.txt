@@ -289,6 +289,7 @@ endif()
 
 
 add_subdirectory(src)
+add_subdirectory(include)
 
 if (NOT WIN32)
     set(BUILD_SHARED_LIBS TRUE CACHE BOOL "Whether to build a dynamic library")
@@ -309,11 +310,16 @@ endif()
 
 # ----- Location of header files ----------------------------------------------
 
+#target_include_directories(QuEST 
+#    PRIVATE src
+#    PUBLIC include
+#)
+
 target_include_directories(QuEST 
     PRIVATE src
-    PUBLIC include
+    PUBLIC  $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
-
 
 # ----- Definitions -----------------------------------------------------------
 
@@ -368,3 +374,12 @@ if (QUEST_MEMCHECK)
     message(FATAL_ERROR "clang compiler required with QUEST_MEMCHECK: found ${CMAKE_CXX_COMPILER_ID}")
   endif()
 endif()
+
+
+# Install
+install(FILES ${QuEST_INC}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/include/QuEST)
+
+install(TARGETS QuEST EXPORT my_export DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/QuEST)
+
+install(EXPORT my_export FILE QuEST-config.cmake DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/QuEST)
