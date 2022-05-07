@@ -21,6 +21,11 @@ set(OUTPUT_EXE   "demo"  CACHE STRING "Executable to compile to")
 
 option(TESTING "Enable unit testing. This disables compiling USER_SOURCE" OFF)
 
+# set C flags that are common between compilers and build types
+set (CMAKE_C_STANDARD 99)
+
+# set C++ flags that are common between compilers and build types
+set (CMAKE_CXX_STANDARD 98)
 # -----------------------------------------------------------------------------
 # ----- QuEST LIBRARY ---------------------------------------------------------
 # ----------------------------------------------------------------------------- 
