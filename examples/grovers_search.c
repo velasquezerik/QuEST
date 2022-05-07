@@ -87,7 +87,7 @@ int main() {
     QuESTEnv env = createQuESTEnv();
     
     // choose the system size
-    int numQubits = 15;
+    int numQubits = 20;
     int numElems = (int) pow(2, numQubits);
     int numReps = ceil(M_PI/4 * sqrt(numElems));
     
